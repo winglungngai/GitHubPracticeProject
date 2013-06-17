@@ -1,141 +1,36 @@
-## 7. Literature Concepts & Architectural Reflections
-This section will give a quick introduction to some basic concepts from the literature used for this course 
-and our reflection on the architectural theories after we applied them to our project.
-First we will discuss the four different types of architectural sketches presented by [Andre van der Hoek](http://www.ics.uci.edu/~andre/) during the lectures.
-Then we will discuss the concepts of views, viewpoints, perspectives as introduced by the Software Systems Architecture book.
-Finally we discuss the Goal Question Metric approach as introduced by [Basili et al.](http://fub-taslim.googlecode.com/svn/trunk/WEMSE/INSTICC_Conference_Latex/gqm.pdf).
+ work of the project
+ - results
+  - pitch - formulates the goal of our project (mention the issues that resulted in our goal and the lacking contribution sectio nof the manual)
+  - gqm - provides a way to measure success of the project
+  -[Context View](ContextView.md)
+  - Neo4j repo + build guides
+  - interview
+ - interview results + repo + build guides can be integrated in the 'contributing' section of the manual (i.e. our main contribution)
+ - interviewing core developer from Neo4j for their insight in internal development process.
 
-### Four types of design sketches
-Andre van der Hoek of the university of California presented four types of design during one of the course's lectures.
-When designing software, or when trying to understand a system's design,
-these four types can help ensure that you don't miss parts of the system.
+## 6. Conclusion
+ - issue, goal, solution
+ - neo4j should use our cool development views
 
-The identified design types are:
-- Application design  
-  This covers what the system should do.
-  Note that this covers not only functional requirements,
-  but also quality properties (like responsiveness)
-- Interaction design  
-  Describes how one interacts with the system.
-  There may be many stakeholders who have to interact with the system.
-  The user is the most obvious one, but the developers, 
-  tester and maintainers have to interact with the system too.
-- Architecture design  
-  Architecture design describes what the conceptual core of the system is, 
-  and how it is structured.
-- Implementation design  
-  This type of design is concerned with implementation details of the system.
+After investigating several information sources as stated in the main activities, 
+our project team is able to gain better insight over the basic architecture of Neo4j([Chapter2](Sketches.md))
+and the stakeholders([Chapter 3](Stakeholders.md)) involved.
 
-Design sketches provided us initial understanding of the system. 
-Some of them can later be translated into architectural model.
+The main issue we have identified([Chapter4](MainIssue.md)) can be formulated as follow: 
+External developers have difficulty contributing to the Neo4j project due to 
+(i) lack of understanding over the source code in the repository and 
+(ii) lack of transparency over the internal design process. ~~(TODO: help need better formulation of the main issue?)~~ 
+The validity of the main issue is tested and verified using GQM approach([Chapter 5](Metrics.md)).
 
-### Rozanski and Woods
-The book Software Systems Architecture by Rozanski and Woods is used as the theoritical foundations for our project.
-Most chapters of the book described a formal, heavy-weighted approach,
-which guides software architects to construct complete architectural documentation for the software system they are going to build.
-This approach is most applicable during the initial phase of the software project, and the stakholders are expected to participate actively.
+Our goal is to help external developers understand the development process ~~(TODO: help need better formulation of the main issue?)~~, 
+therefore the context view([Chapter 6](ContextView.md)) is created to describe 
+the interaction between the Neo4j server and other external entities ~~(TODO: is this reason valid?)~~. 
+More importantly, the development view([Chapter 7](DevelopmentView.md)) is created to describe 
+the stucture and the organisation of the source code in the repository. ~~(TODO: is this reason valid?)~~ 
+In addition, an extra decision-making flow view/model/scenario~~(TODO: what should it be exactly?)~~ is added to the set of architecture documents. 
+The decision-making (model) contains the decision-making process and the decisions made in the past and the project planning in the future.~~(TODO: too ambitious?)~~
 
-However, we found this approach not applicable for our project. 
-First of all, we are evaluating an existing software system, not building one.
-Second, we are not in the position to ask for very high commitment of time and resources from the stakeholders,
-as they are not likely to understand why the investment is worth it.
+Finally, we would like to make contribution ourself to the Neo4j project. 
+Based on the architecture documents, we have written/improved ~~(TODO: what should it be exactly?)~~ 
+several Quick Start/Manaul of Neo4j, which is meant for external developers to quickly understand and work with the source code of Neo4j.
 
-Rozanski and Woods suggests another light-weighted approach, Tiny Architectural Review Approach (TARA) in 
-Chapter 14 Evaluating the Architecture, Validating the Architecture of an Existing System.
-Note that TARA approach is very flexible, as the authors stated that they never used TARA the same way twice.
-The main idea is to first identify the goals and the target audience, 
-then focus only on the system aspects that are related to the goals, 
-and finally give recommendations that are tailoring to the needs and desires of the target audience.
-
-
-#### Stakeholders Analysis
-According to Rozanski and Woods, stakeholders are those who have an interest in the realization of the system.
-Each of the stakeholders have their own concerns about the system, 
-and meeting the needs of the stakeholders is why the system is being created in the first place.
-
-In our opinion, a stakeholder analysis is indeed essential for our project.
-However, we are not able to follow the approach completely.
-The original purpose of conducting a stakeholder analysis is 
-to identify all classes of stakeholders (or at least their representatives)
-which allows the archtiects to discuss with stakeholders about the architectural design, 
-and to resolve conflicts of interests.
-Altrough we have identified most of the stakeholder classes, 
-unfortunately it is not possible to establish a proper communication channel 
-with the most prominant stakeholder - Neo Technology. 
-Without direct interaction with most of the stakeholder class, it defeats the purpose.
-
-So we have taken a different approach: using the stakeholder analysis to 
-identify the stakeholder whose needs are the most ignored, which turns out to be the external developers
-Based on the stakeholder analysis, we made a decision to focus on our target stakeholder group  - the external developers, 
-and help them understand the system by creating mssing architectural documents that are relevant.
-
-#### View & Viewpoints
-A document describing how (part of) the system works 
-and how it meets some of the concerns of its stakeholders, is called a View.
-Rozanski and Woods grouped related concerns together into Viewpoints.
-Each Viewpoint is basically a collection of concerns and is described by one or more Views.
-Together, these Views should document the system to such an extent,
-that all concerns of the Viewpoint are discussed.
-
-For our project, we created a Context View, adhering to the Context Viewpoint.
-The Context View highlights the key requirements of the system and describes the dependencies to other external entities.
-This view provides both us (the architects) and the external developer 
-the high level overview of the system, but is not sufficient to achieve our goal.
-
-To achieve our goal - help external developer understand the system, we make use of the Development Viewpoint.
-We also created several Development Views, such as the build document and the guide to setup vagrant virtual environment.
-Note that we only create documentation that are essential but currently missing.
-
-Other viewpoints, including Functional Viewpoint, Deployment Viewpoint, Operational Viewpoint, Concurrency Viewpoint
-would eventually be useful, as developer is listed as relevant stakeholders in all of these viewpoints.
-But these viewpoints are not used because they do not address our goal very well.
-
-However, Information Viewpoint is fundamentally not applicable. Our system is basically a graph database.
-Data storage, manipulation and management is the functionalites provided by the system, which should be described by the Functional View.
-
-#### Perspective
-The last important concept of the book is the Perspective.
-A Perspective is related to quality properties (like security or performance) of the system.
-Perspectives are applied to Views to make sure you take these quality properties into account.
-The most applicable perpsectives for our goal would be the Evolution Pespective and the Developement Resource Perspective.
-
-### The Goal Question Metric (GQM) approach
-The Goal Question Metric approach by Basili et al. describes a way to handle software metrics for measurement within a project.
-The paper claims a top-down approach,
-working downwards from a goal to find the metrics to measure,
-is the right way of defining measurement procedures.
-
-First, a goal should be formulated.
-The goal should be specific enough so that it can actually be verified if it was met.
-The GQM requires the goal to focus on a specific *quality issue* of some *object* of the system (a Product, Process or Resource), from a specific point of view.
-
-So a goal should have four properties, which we can illustrate with the following example goal:
-* Purpose: To improve
-* Quality Issue: the timeliness
-* Object: of change request processing
-* Viewpoint: from the project manager's viewpoint.
-
-Note that viewpoint here does not refer to the Viewpoint as defined by Rozanski and Woods.
-
-When the goal is formulated, it should be refined into a series of questions.
-Each question should try to characterize the object of the goal with respect to the selected quality issue and to determine its quality from the selected viewpoint.
-So a question should try to determine the value of some quality property of the object.
-This value has to take the viewpoint defined in the goal into account.
-
-An example question for the previous example goal could be:
-"What is the current change request processing speed?"  
-The answer to this question will determine the speed (quality property related to timeliness) of the change request processing (the object of the goal).
-
-Finally, metrics should be identified for each question.
-These metrics can be measured and used to answer the question.
-When doing this, keep in mind that the metric has to take the viewpoint of the goal into account.
-For objective metrics like code size, this is not an issue.
-However, for subjective measures like readability, 
-the metrics have to be measured according to the correct viewpoint.
-
-An example of an objective metric for the previous example question could be
-the average cycle time.
-
-The GQM approach matches perfectly to the TARA approach of Rozanski and Woods.
-It helps us identify our target audience and specify our goals.
-Moreover, GQM verifies whether our observation on the weaknesses of the system is valid.
