@@ -1,4 +1,3 @@
-
 ## 7. Literature Concepts & Architectural Reflections
 This section will give a quick introduction to some basic concepts from the literature used for this course 
 and our reflection on the architectural theories after we applied them to our project.
@@ -6,14 +5,32 @@ First we will discuss the concepts of views, viewpoints, perspectives as introdu
 Then we will discuss the four different types of architectural sketches presented by [Andre van der Hoek](http://www.ics.uci.edu/~andre/) during the lectures.
 Finally we discuss the Goal Question Metric approach as introduced by [Basili et al.](http://fub-taslim.googlecode.com/svn/trunk/WEMSE/INSTICC_Conference_Latex/gqm.pdf).
 
-### Stakeholders, Views, Viewpoints and Perspectives
+### Rozanski and Woods
+The book Software Systems Architecture by Rozanski and Woods is used as the theoritical foundations for our project.
+Most chapters of the book described a formal, heavy-weighted approach,
+which guides software architects to construct complete architectural documentation for the software system they are going to build.
+This approach is most applicable during the initial phase of the software project, and the stakholders are expected to participate actively.
+
+However, we found this approach not applicable for our project. 
+First of all, we are evaluating an existing software system, not building one.
+Second, we are not in the position to ask for very high commitment of time and resources from the stakeholders,
+as they are not likely to understand why the investment is worth it.
+
+Rozanski and Woods suggests another light-weighted approach, Tiny Architectural Review Approach (TARA) in 
+Chapter 14 Evaluating the Architecture, Validating the Architecture of an Existing System.
+Note that TARA approach is very flexible, as the authors stated that they never used TARA the same way twice.
+The main idea is to first identify the goals and the target audience, 
+then focus only on the system aspects that are related to the goals, 
+and finally give recommendations that are tailoring to the needs and desires of the target audience.
+
+
 #### Stakeholders
 According to Rozanski and Woods, stakeholders are those who have an interest in the realization of the system.
 Each of the stakeholders have their own concerns about the system, 
 and meeting the needs of the stakeholders is why the system is being created in the first place.
 
-In our opinion, a stakeholder analysis is indeed essential. 
-However, we are not able to follow the approach completely for our project.
+In our opinion, a stakeholder analysis is indeed essential for our project.
+However, we are not able to follow the approach completely.
 The original purpose of conducting a stakeholder analysis is 
 to identify all classes of stakeholders (or at least their representatives)
 which allows the archtiects to discuss with stakeholders about the architectural design, 
@@ -24,22 +41,23 @@ with the most prominant stakeholder - Neo Technology.
 Without direct interaction with most of the stakeholder class, it defeats the purpose.
 
 So we have taken a different approach: using the stakeholder analysis to 
-identify the stakeholder whose needs is the most ignored, which turns out to be the external developers
+identify the stakeholder whose needs are the most ignored, which turns out to be the external developers
 Based on the stakeholder analysis, we made a decision to focus on our target stakeholder group  - the external developers, 
-and help them by creating relevant archtiectural documents that are missing.
+and help them by creating relevant architectural documents that are missing.
 
 #### View & Viewpoints
 A document describing how (part of) the system works 
 and how it meets some of the concerns of its stakeholders, is called a View.
-
 Rozanski and Woods grouped related concerns together into Viewpoints.
 Each Viewpoint is basically a collection of concerns and is described by one or more Views.
 Together, these Views should document the system to such an extent,
 that all concerns of the Viewpoint are discussed.
 
-For our project, we created a Context View, adhering to the Context Viewpoint, and several Development Views, which partly cover the Development Viewpoint.
+For our project, we created a Context View, adhering to the Context Viewpoint.
 
-#### View & Viewpoints
+We also created several Development Views, which partly cover the Development Viewpoint.
+
+#### Perspective
 The last important concept of the book is the Perspective.
 A Perspective is related to quality properties (like security or performance) of the system.
 Perspectives are applied to Views to make sure you take these quality properties into account.
