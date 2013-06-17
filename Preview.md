@@ -10,16 +10,34 @@ Therefore we formulated our goal for this project as "helping external developer
 During the [mid-term pitch](presentation/pitch/index.html), we have presented the identified issues and our project goal.
 
 ### Goal, Questions and Metrics approach
-GQM - provides a way to measure success of the project
+The Goal of the [GQM assignment](Metrics.md) is to improve the succeeding rate of the contribution process of the Neo4j community.
+We raises 3 questions and for each questions 2 metrics to test the validity of the statement 
+"external developers have difficulty contributing to the Neo4j project".
 
-### Context View
-  -[Context View](ContextView.md)
+### Context Viewpoint
+[Context Viewpoint](ContextView.md) decribes the key requirements of the system and
+the dependencies of the system to other external entities. 
+This viewpoint gives the external developer the high level overview of the system.
   
-### Development View
-  - Neo4j repo + build guides
-  - interview
- - interview results + repo + build guides can be integrated in the 'contributing' section of the manual (i.e. our main contribution)
- - interviewing core developer from Neo4j for their insight in internal development process.
+### Development Viewpoint
+The context viewpoint is useful, but it does not provide sufficient support to the external developers.
+The most important contributions of our project can be found in the [Development Viewpoint](DevelopmentView.md).
+
+#### Repository Stucture
+can be integrated in the 'contributing' section of the manual
+
+#### Build Guides
+
+#### Vagrant build automation workflow
+
+#### Internal Development Process
+Our team has tried our best to schedule an interview with the internal developers for their insight in internal development process.
+We have sent the core developer an email.
+We have tweeted the internal developers.
+We even made an pull request to the Neo4j Repository. But there were no positive response.
+
+What would have been the results from this interview are 
+for example their internal decisiion-making workflow and their roadmap.
 
 ### Final Presenation
 We have presented our final results at the [final presentation](presentation/final/index.html). 
