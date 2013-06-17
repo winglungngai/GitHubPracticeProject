@@ -1,4 +1,5 @@
- work of the project
+
+## 5. Main work of the project
  - results
   - pitch - formulates the goal of our project (mention the issues that resulted in our goal and the lacking contribution sectio nof the manual)
   - gqm - provides a way to measure success of the project
@@ -33,4 +34,3 @@ The decision-making (model) contains the decision-making process and the decisio
 Finally, we would like to make contribution ourself to the Neo4j project. 
 Based on the architecture documents, we have written/improved ~~(TODO: what should it be exactly?)~~ 
 several Quick Start/Manaul of Neo4j, which is meant for external developers to quickly understand and work with the source code of Neo4j.
-
