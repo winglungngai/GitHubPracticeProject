@@ -1,5 +1,13 @@
-
 ## 5. Main work of the project
+
+Based on these observations, we were able to identify the following issue of Neo4j:
+External developers have difficulty contributing to the Neo4j project due to 
+* (i) lack of transparency over the internal developement process.
+* (ii) lack of understanding over the build process and the organization of the source code.
+
+And we formulated our goal for this project as "helping external developers understand the development process".
+
+After we formulated the goal of our project, we are 
  - results
   - pitch - formulates the goal of our project (mention the issues that resulted in our goal and the lacking contribution sectio nof the manual)
   - gqm - provides a way to measure success of the project
