@@ -43,7 +43,7 @@ Without direct interaction with most of the stakeholder class, it defeats the pu
 So we have taken a different approach: using the stakeholder analysis to 
 identify the stakeholder whose needs are the most ignored, which turns out to be the external developers
 Based on the stakeholder analysis, we made a decision to focus on our target stakeholder group  - the external developers, 
-and help them by creating relevant architectural documents that are missing.
+and help them understand the system by creating mssing architectural documents that are relevant.
 
 #### View & Viewpoints
 A document describing how (part of) the system works 
@@ -54,14 +54,26 @@ Together, these Views should document the system to such an extent,
 that all concerns of the Viewpoint are discussed.
 
 For our project, we created a Context View, adhering to the Context Viewpoint.
+The Context View highlights the key requirements of the system and describes the dependencies to other external entities.
+This view provides both us (the architects) and the external developer 
+the high level overview of the system, but is not sufficient to achieve our goal.
 
-We also created several Development Views, which partly cover the Development Viewpoint.
+To achieve our goal - help external developer understand the system, we make use of the Development Viewpoint.
+We also created several Development Views, such as the build document and the guide to setup vagrant virtual environment.
+Note that we only create documentation that are essential but currently missing.
+
+Other viewpoints, including Functional Viewpoint, Deployment Viewpoint, Operational Viewpoint, Concurrency Viewpoint
+would eventually be useful, as developer is listed as relevant stakeholders in all of these viewpoints.
+But these viewpoints are not used because they do not address our goal very well.
+
+However, Information Viewpoint is fundamentally not applicable. Our system is basically a graph database.
+Data storage, manipulation and management is the functionalites provided by the system, which should be described by the Functional View.
 
 #### Perspective
 The last important concept of the book is the Perspective.
 A Perspective is related to quality properties (like security or performance) of the system.
 Perspectives are applied to Views to make sure you take these quality properties into account.
-For example, the Security Perspective was applied to our Context View to identify the places where the system is possibly vulnerable.
+The most applicable perpsectives for our goal would be the Evolution Pespective and the Developement Resource Perspective.
 
 ### Four types of design sketches
 Andre van der Hoek of the university of California presented four types of design during one of the course's lectures.
