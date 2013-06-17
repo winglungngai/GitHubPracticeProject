@@ -1,21 +1,30 @@
 ## 5. Main work of the project
 
-Based on these observations, we were able to identify the following issue of Neo4j:
+### Goal Formulation and Mid-term Pitch
+Based on the preliminary results of the background analysis, we were able to identify the following issue of Neo4j:
 External developers have difficulty contributing to the Neo4j project due to 
 * (i) lack of transparency over the internal developement process.
 * (ii) lack of understanding over the build process and the organization of the source code.
 
-And we formulated our goal for this project as "helping external developers understand the development process".
+Therefore we formulated our goal for this project as "helping external developers understand the development process".
+During the [mid-term pitch](presentation/pitch/index.html), we have presented the identified issues and our project goal.
 
-After we formulated the goal of our project, we are 
- - results
-  - pitch - formulates the goal of our project (mention the issues that resulted in our goal and the lacking contribution sectio nof the manual)
-  - gqm - provides a way to measure success of the project
+### Goal, Questions and Metrics approach
+GQM - provides a way to measure success of the project
+
+### Context View
   -[Context View](ContextView.md)
+  
+### Development View
   - Neo4j repo + build guides
   - interview
  - interview results + repo + build guides can be integrated in the 'contributing' section of the manual (i.e. our main contribution)
  - interviewing core developer from Neo4j for their insight in internal development process.
+
+### Final Presenation
+We have presented our final results at the [final presentation](presentation/final/index.html). 
+During the presenation, we have discussed the high level architecture of Neo4j, xplained our project goal 
+and presented our contributions to the Neo4j project.
 
 ## 6. Conclusion
  - issue, goal, solution
