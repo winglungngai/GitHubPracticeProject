@@ -1,9 +1,33 @@
 ## 7. Literature Concepts & Architectural Reflections
 This section will give a quick introduction to some basic concepts from the literature used for this course 
 and our reflection on the architectural theories after we applied them to our project.
-First we will discuss the concepts of views, viewpoints, perspectives as introduced by the Software Systems Architecture book.
-Then we will discuss the four different types of architectural sketches presented by [Andre van der Hoek](http://www.ics.uci.edu/~andre/) during the lectures.
+First we will discuss the four different types of architectural sketches presented by [Andre van der Hoek](http://www.ics.uci.edu/~andre/) during the lectures.
+Then we will discuss the concepts of views, viewpoints, perspectives as introduced by the Software Systems Architecture book.
 Finally we discuss the Goal Question Metric approach as introduced by [Basili et al.](http://fub-taslim.googlecode.com/svn/trunk/WEMSE/INSTICC_Conference_Latex/gqm.pdf).
+
+### Four types of design sketches
+Andre van der Hoek of the university of California presented four types of design during one of the course's lectures.
+When designing software, or when trying to understand a system's design,
+these four types can help ensure that you don't miss parts of the system.
+
+The identified design types are:
+- Application design  
+  This covers what the system should do.
+  Note that this covers not only functional requirements,
+  but also quality properties (like responsiveness)
+- Interaction design  
+  Describes how one interacts with the system.
+  There may be many stakeholders who have to interact with the system.
+  The user is the most obvious one, but the developers, 
+  tester and maintainers have to interact with the system too.
+- Architecture design  
+  Architecture design describes what the conceptual core of the system is, 
+  and how it is structured.
+- Implementation design  
+  This type of design is concerned with implementation details of the system.
+
+Design sketches provided us initial understanding of the system. 
+Some of them can later be translated into architectural model.
 
 ### Rozanski and Woods
 The book Software Systems Architecture by Rozanski and Woods is used as the theoritical foundations for our project.
@@ -24,7 +48,7 @@ then focus only on the system aspects that are related to the goals,
 and finally give recommendations that are tailoring to the needs and desires of the target audience.
 
 
-#### Stakeholders
+#### Stakeholders Analysis
 According to Rozanski and Woods, stakeholders are those who have an interest in the realization of the system.
 Each of the stakeholders have their own concerns about the system, 
 and meeting the needs of the stakeholders is why the system is being created in the first place.
@@ -75,27 +99,6 @@ A Perspective is related to quality properties (like security or performance) of
 Perspectives are applied to Views to make sure you take these quality properties into account.
 The most applicable perpsectives for our goal would be the Evolution Pespective and the Developement Resource Perspective.
 
-### Four types of design sketches
-Andre van der Hoek of the university of California presented four types of design during one of the course's lectures.
-When designing software, or when trying to understand a system's design,
-these four types can help ensure that you don't miss parts of the system.
-
-The identified design types are:
-- Application design  
-  This covers what the system should do.
-  Note that this covers not only functional requirements,
-  but also quality properties (like responsiveness)
-- Interaction design  
-  Describes how one interacts with the system.
-  There may be many stakeholders who have to interact with the system.
-  The user is the most obvious one, but the developers, 
-  tester and maintainers have to interact with the system too.
-- Architecture design  
-  Architecture design describes what the conceptual core of the system is, 
-  and how it is structured.
-- Implementation design  
-  This type of design is concerned with implementation details of the system.
-
 ### The Goal Question Metric (GQM) approach
 The Goal Question Metric approach by Basili et al. describes a way to handle software metrics for measurement within a project.
 The paper claims a top-down approach,
@@ -132,3 +135,7 @@ the metrics have to be measured according to the correct viewpoint.
 
 An example of an objective metric for the previous example question could be
 the average cycle time.
+
+The GQM approach matches perfectly to the TARA approach of Rozanski and Woods.
+It helps us identify our target audience and specify our goals.
+Moreover, GQM verifies whether our observation on the weaknesses of the system is valid.
