@@ -39,16 +39,15 @@ As an example, our course instructor advised us to choose an open source project
 However, the build instructions is currently seperated into multiple documetns or even missing.
 herefore a [build guide](build.txt) is created, which serves as a technical manual describing the existing build process.
 
-#### Vagrant build automation workflow
-However, the build document can be out-dated very quickly.
-Each time when the code is updated, the developer needs to go through all build scenarios.
-Another problem is the variation management, there are infinite amount of reason why build fails on the developer's machine.
-Therefore we formulate an [automatic build approach using Vagrant](where), a virtual integration tool.
-Vagrant can be used to automatically create a disposable, consistent environment,
-where the source code can be built can tested. ~~Don't know what I am saying. ask Hans~~
-On the one hand, the Vagrant approach speeds up the build tests by offering automation,
-on the other hand, the developers can verify by themselves 
-whether the explicitly described build configuration is successful.
+#### Vagrant build automation workflow ~~Don't know what I am saying. ask Hans~~
+the developer needs to verify all common build scenarios every time the code is updated.
+There are still infinite amount of unknown reason why certain build fails on the some of the developer's machine.
+
+Therefore we formulate the [Vagrant build automation workflow](where).
+Vagrant can be used to automatically create multiple disposable, consistent environments,
+where the source code can be built can tested.
+This appoarch not only speeds up the process of verifying build scenarios, more importantly,
+external developers should be able to *reproduce* the result of an explicietly documented build scenario.
 
 #### Internal Development Process (Planned)
 Our team has tried our best to schedule an interview with the internal developers for their insight in internal development process.
