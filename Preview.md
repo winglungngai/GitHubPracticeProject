@@ -22,15 +22,35 @@ This viewpoint gives the external developer the high level overview of the syste
 ### Development Viewpoint
 The context viewpoint is useful, but it does not provide sufficient support to the external developers.
 The most important contributions of our project can be found in the [Development Viewpoint](DevelopmentView.md).
+We are planning to integrate the Repository Stucture, the Build Guides and the Vagrant build automation workflow 
+into the [contributing section of the Neo4j manual](http://docs.neo4j.org/chunked/milestone/community-contributing.html).
 
-#### Repository Stucture
-can be integrated in the 'contributing' section of the manual
+#### Repository Structure/Module Structure Model
+At this moment, the organization of the source code in the repository is not explained at all.
+External developers need to waste a lot of time just try to get an initial understanding the codebase.
+Therefore one of our contribution is to document the [repository structure](DevelopmentView.md#module-structure-model).
+The repository structure contains an overview of the modules, a brief description of each module and
+how they are interconnected to each other.
 
 #### Build Guides
+Difference in configuration/settings, such as the choice of the operating systems and the version of JDK, can results in build failures.
+The difficulty of the build process can greatly affect the choice of the external developers whether they want to start working on this project.
+As an example, our course instructor advised us to choose an open source project which can be built, as many project has serious build issues.
+However, the build instructions is currently seperated into multiple documetns or even missing.
+herefore a [build guide](build.txt) is created, which serves as a technical manual describing the existing build process.
 
 #### Vagrant build automation workflow
+However, the build document can be out-dated very quickly.
+Each time when the code is updated, the developer needs to go through all build scenarios.
+Another problem is the variation management, there are infinite amount of reason why build fails on the developer's machine.
+Therefore we formulate an [automatic build approach using Vagrant](where), a virtual integration tool.
+Vagrant can be used to automatically create a disposable, consistent environment,
+where the source code can be built can tested. ~~Don't know what I am saying. ask Hans~~
+On the one hand, the Vagrant approach speeds up the build tests by offering automation,
+on the other hand, the developers can verify by themselves 
+whether the explicitly described build configuration is successful.
 
-#### Internal Development Process
+#### Internal Development Process (Planned)
 Our team has tried our best to schedule an interview with the internal developers for their insight in internal development process.
 We have sent the core developer an email.
 We have tweeted the internal developers.
