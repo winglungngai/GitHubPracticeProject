@@ -64,27 +64,22 @@ During the presenation, we have discussed the high level architecture of Neo4j, 
 and presented our contributions to the Neo4j project.
 
 ## 6. Conclusion
- - issue, goal, solution
- - neo4j should use our cool development views
+After conducting the background analysis, 
+our project team is able to gain an [initial understanding](Sketches.md) of Neo4j
+and the [stakeholders](Stakeholders.md) involved.
 
-After investigating several information sources as stated in the main activities, 
-our project team is able to gain better insight over the basic architecture of Neo4j([Chapter2](Sketches.md))
-and the stakeholders([Chapter 3](Stakeholders.md)) involved.
+The preliminary results of the background analysis shows that 
+external developers have difficulty contributing to the Neo4j project due to 
+(i) the lack of understanding over the build process and the source code organization
+(ii) the lack of transparency over the internal design process.
+The validity of the main issue is tested and verified using [GQM approach](Metrics.md).
 
-The main issue we have identified([Chapter4](MainIssue.md)) can be formulated as follow: 
-External developers have difficulty contributing to the Neo4j project due to 
-(i) lack of understanding over the source code in the repository and 
-(ii) lack of transparency over the internal design process. ~~(TODO: help need better formulation of the main issue?)~~ 
-The validity of the main issue is tested and verified using GQM approach([Chapter 5](Metrics.md)).
+Our goal is to help external developers understand the development process, 
+therefore, besides the [Context Viewpoint](ContextView.md), we also created the [Development Viewpoint](DevelopmentView.md) 
+for the purpose of providing an detailed elaboration about the development process.
 
-Our goal is to help external developers understand the development process ~~(TODO: help need better formulation of the main issue?)~~, 
-therefore the context view([Chapter 6](ContextView.md)) is created to describe 
-the interaction between the Neo4j server and other external entities ~~(TODO: is this reason valid?)~~. 
-More importantly, the development view([Chapter 7](DevelopmentView.md)) is created to describe 
-the stucture and the organisation of the source code in the repository. ~~(TODO: is this reason valid?)~~ 
-In addition, an extra decision-making flow view/model/scenario~~(TODO: what should it be exactly?)~~ is added to the set of architecture documents. 
-The decision-making (model) contains the decision-making process and the decisions made in the past and the project planning in the future.~~(TODO: too ambitious?)~~
-
-Finally, we would like to make contribution ourself to the Neo4j project. 
-Based on the architecture documents, we have written/improved ~~(TODO: what should it be exactly?)~~ 
-several Quick Start/Manaul of Neo4j, which is meant for external developers to quickly understand and work with the source code of Neo4j.
+Finally, our main contributions to the Neo4j project are:
+* [Repository Structure](DevelopmentView.md#module-structure-model)
+* [Build Guide](build.txt)
+* [Vagrant build automation workflow](where)
+These documents should be intergated into the [contributing section of the Neo4j manual](http://docs.neo4j.org/chunked/milestone/community-contributing.html).
