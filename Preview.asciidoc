@@ -1,85 +1,264 @@
-## 5. Main work of the project
+[[Build-documentation]]
+= Building Neo4j =
 
-### Goal Formulation and Mid-term Pitch
-Based on the preliminary results of the background analysis, we were able to identify the following issue of Neo4j:
-External developers have difficulty contributing to the Neo4j project due to 
-* (i) lack of transparency over the internal development process.
-* (ii) lack of understanding over the build process and the organization of the source code.
+1.1 <<Introduction, Introduction>>
 
-Therefore we formulated our goal for this project as "helping external developers understand the development process".
-During the [mid-term pitch](presentation/pitch/index.html), we have presented the identified issues and our project goal.
+1.2 <<target, For whom is this document intended?>>
 
-### Goal, Questions and Metrics approach
-The Goal of the [GQM assignment](Metrics.md) is to improve the succeeding rate of the contribution process of the Neo4j community.
-We raises 3 questions and for each questions 2 metrics to test the validity of the statement 
-"external developers have difficulty contributing to the Neo4j project".
+1.3 <<Motivation, Motivation>>
 
-### Context Viewpoint
-[Context Viewpoint](ContextView.md) describes the key requirements of the system and
-the dependencies of the system to other external entities. 
-This viewpoint gives the external developer the high level overview of the system.
-  
-### Development Viewpoint
-The context viewpoint is useful, but it does not provide sufficient support to the external developers.
-The most important contributions of our project can be found in the [Development Viewpoint](DevelopmentView.md).
-We are planning to integrate the Repository Structure, the Build Guides and the Vagrant build automation workflow 
-into the [contributing section of the Neo4j manual](http://docs.neo4j.org/chunked/milestone/community-contributing.html).
+2.1 <<Matrix, Test Matrix>>
 
-#### Repository Structure/Module Structure Model
-At this moment, the organization of the source code in the repository is not explained at all.
-External developers need to waste a lot of time just try to get an initial understanding the codebase.
-Therefore one of our contribution is to document the [repository structure](DevelopmentView.md#module-structure-model).
-The repository structure contains an overview of the modules, a brief description of each module and
-how they are interconnected to each other.
+3.1 <<Platforms, Platforms>>
 
-#### Build Guides
-Difference in configuration/settings, such as the choice of the operating systems and the version of JDK, can results in build failures.
-The difficulty of the build process can greatly affect the choice of the external developers whether they want to start working on this project.
-As an example, our course instructor advised us to choose an open source project which can be built, as many project has serious build issues.
-However, the build instructions is currently separated into multiple documents or even missing.
-Therefore a [build guide](build.txt) is created, which serves as a technical manual describing the existing build process.
+3.2 <<Debian-Ubuntu, Debian & Ubuntu>>
 
-#### Vagrant build automation workflow ~~Don't know what I am saying. ask Hans~~
-the developer needs to verify all common build scenarios every time the code is updated.
-There are still infinite amount of unknown reason why certain build fails on the some of the developer's machine.
+3.3 <<OSX,OS X >>
 
-Therefore we formulate the [Vagrant build automation workflow](where).
-Vagrant can be used to automatically create multiple disposable, consistent environments,
-where the source code can be built can tested.
-This approach not only speeds up the process of verifying build scenarios, more importantly,
-external developers should be able to *reproduce* the result of an explicitly documented build scenario.
+3.4 <<Windows7, Windows 7>>
 
-#### Internal Development Process (Planned)
-Our team has tried our best to schedule an interview with the internal developers for their insight in internal development process.
-We have sent the core developer an email.
-We have tweeted the internal developers.
-We even made an pull request to the Neo4j Repository. But there were no positive response.
+[[Introduction]]
 
-What would have been the results from this interview are 
-for example their internal decision-making workflow and their roadmap.
+== Introduction ==
 
-### Final Presentation
-We have presented our final results at the [final presentation](presentation/final/index.html). 
-During the presentation, we have discussed the high level architecture of Neo4j, explained our project goal 
-and presented our contributions to the Neo4j project.
+This document describes the build process used by Neo4j Community Edition,
+and is intended as both full replacement for the current documentation out
+there as well as an addition to the Neo4j user manual.
 
-## 6. Conclusion
-After conducting the background analysis, 
-our project team is able to gain an [initial understanding](Sketches.md) of Neo4j
-and the [stakeholders](Stakeholders.md) involved.
+[[target]]
+=== For whom is this document intended? ===
 
-The preliminary results of the background analysis shows that 
-external developers have difficulty contributing to the Neo4j project due to 
-(i) the lack of understanding over the build process and the source code organization
-(ii) the lack of transparency over the internal design process.
-The validity of the main issue is tested and verified using [GQM approach](Metrics.md).
+Currently it is more difficult than necessary to get started with Neo4j,
+especially setting up the project so that it will build. +
+This document was written with external developers looking to contribute
+to Neo4j in mind.
 
-Our goal is to help external developers understand the development process, 
-therefore, besides the [Context Viewpoint](ContextView.md), we also created the [Development Viewpoint](DevelopmentView.md) 
-for the purpose of providing an detailed elaboration about the development process.
+[[Motivation]]
+=== Motivation ===
 
-Finally, our main contributions to the Neo4j project are:
-* [Repository Structure](DevelopmentView.md#module-structure-model)
-* [Build Guide](build.txt)
-* [Vagrant build automation workflow](where)
-These documents should be integrated into the [contributing section of the Neo4j manual](http://docs.neo4j.org/chunked/milestone/community-contributing.html).
+The motivation for this document was born out of a desire on the part of the
+team (formed in the context of the Software Architecture course) to have an
+easily accessible place that clearly explains how to build the Neo4j Community
+Edition system instead of the current situation in which build documentation is
+scattered over at least 3 places within the neo4j Github repository.
+
+[[Matrix]]
+== Test matrix ==
+
+// The test matrix can tell you where Java 6 and 7 will and won't work.
+// *Yes* means that the combination of OS ans Java version has been
+// tested and has been found to work, while a *no* means the combination
+// won't work. A *?* in the table means that the combination has not been
+// tested or non-conclusive results were found.
+
+The test matrix below contains various popular system configurations and the results our
+team got in trying to build Neo4j on it.
+
+NOTE: The Java environments used on Linux were the OpenJDK variants unless stated otherwise.
+
+NOTE: The Java environments used on OS X were Apple's version for Java 6 and Oracle's JVM 7.
+
++++
+<table border="4">
+       <th> OS           <th> bits                <th> JDK <th> Used flags                                                <th> Builds properly?
+<tr> <td> Ubuntu 12.04 <td align="center">  64  <td align="center">  6  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild                                <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild                        <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> true
+<tr> <td>              <td>                     <td>                    <td>                                            <td>
+<tr> <td> Ubuntu 12.04 <td align="center">  64  <td align="center">  7  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild                                <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild                        <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> true
+<tr> <th> OS           <th> bits                <th> JDK <th> Used flags                                                <th> Builds properly?
+<tr> <td> Ubuntu 13.04 <td align="center">  64  <td align="center">  6  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild                                <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild                        <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> true
+<tr> <td>              <td>                     <td>                    <td>                                            <td>
+<tr> <td> Ubuntu 13.04 <td align="center">  64  <td align="center">  7  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild                                <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild                        <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> true
+<tr> <th> OS           <th> bits                <th> JDK                <th> Used flags                                 <th> Builds properly?
+<tr> <td> OS X 10.7    <td align="center">  64  <td align="center">  6  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild                                <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild                        <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  6  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> false
+<tr> <td>              <td>                     <td>                    <td>                                            <td>
+<tr> <td> OS X 10.7    <td align="center">  64  <td align="center">  7  <td>                                            <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT                                    <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild                                <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -Dmaven.test.skip=true                     <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild                        <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> true
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> false
+<tr> <td>              <td align="center">  64  <td align="center">  7  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> false
+<tr> <th> OS           <th> bits                <th> JDK                <th> Used flags                                 <th> Builds properly?
+<tr> <td> Win 7 Prof.  <td align="center">  32  <td align="center">  6  <td>                                            <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -Dlicensing.skip                           <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT                                    <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -Dlicensing.skip                   <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DfullBuild                                <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DfullBuild -Dlicensing.skip               <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -Dmaven.test.skip=true                     <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -Dmaven.test.skip=true -Dlicensing.skip    <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -DfullBuild                        <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -DfullBuild -Dlicensing.skip       <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -Dmaven.test.skip=true
+                                                                                                                  -Dlicensing.skip             <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DfullBuild -Dmaven.test.skip=true
+                                                                                                                  -Dlicensing.skip             <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  6  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true
+                                                                                                                        -Dlicensing.skip       <td align="center"> false
+<tr> <td> Win 7 Prof.  <td align="center">  32  <td align="center">  7  <td>                                            <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -Dlicensing.skip                           <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT                                    <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -Dlicensing.skip                   <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DfullBuild                                <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DfullBuild -Dlicensing.skip               <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -Dmaven.test.skip=true                     <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -Dmaven.test.skip=true -Dlicensing.skip    <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -DfullBuild                        <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -DfullBuild -Dlicensing.skip       <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -Dmaven.test.skip=true             <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -Dmaven.test.skip=true
+                                                                                                                  -Dlicensing.skip             <td align="center"> true
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DfullBuild -Dmaven.test.skip=true         <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DfullBuild -Dmaven.test.skip=true
+                                                                                                                  -Dlicensing.skip             <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true <td align="center"> false
+<tr> <td>              <td align="center">  32  <td align="center">  7  <td> -DrunIT -DfullBuild -Dmaven.test.skip=true
+                                                                                                                        -Dlicensing.skip       <td align="center"> false
+<tr> <th> OS           <th> bits                <th> JDK                <th> Used flags                                 <th> Builds properly?
+</table>
++++
+ +
+There are consistently failing OS X builds and Windows builds that are not so easily fixed. +
+As these failures appear to be related to performing a full build (i.e.
+passing the _-DfullBuild_ flag), an issue has been opened about it https://github.com/neo4j/neo4j/issues/875[here].
+
+[[Platforms]]
+== Platforms ==
+
+There are several platform specific instructions which will be handled
+in the section below, there are however maven instructions which are
+honored on every platform:
+
+* _fullBuild_ -  This will build  all packages (community,  advanced and
+  enterprise) as well as documentation
+* _runITs_ - runs integration testing as well
+* _maven.test.skip=true_ - tells maven to skip tests
+* _licensing.skip_ - Skips the licensing checks during a build
+
+The parameters above can be invoked by passing them with a '-D' prefix
+e.g.  `mvn clean install -DfullBuild`
+
+NOTE: Some tests have specific machine context demands, the following
+list is not complete but gives an idea about implicit demands: +
+ +
+1. the build machine's socket localhost:8888 should not be used by
+  other programs +
+2. In case of vague errors, try to run maven with the parameter `-e` for
+  more extensive error output or `-X` from debug output
+
+.Dependencies
+
+* maven
+
+[[Debian-Ubuntu]]
+=== Debian & Ubuntu Linux ===
+
+Read this section if you want to know how to get Neo4j up and
+running under Debian or Ubuntu Linux.
+
+These instruction are with respect to a clean debian 7/Ubuntu 13.04 install.
+Specific installation instructions for the dependencies: +
+`apt-get install --no-install-recommends -y maven openjdk-7-jdk asciidoc docbook docbook-xml xsltproc libxml2-utils make w3m graphviz devscripts debhelper fakeroot build-essent$
+
+Neo4j can then be build by issuing +
+`mvn clean install`
+
+NOTE: after installing openjdk 7, it can be the case openjdk-6 is
+still installed and used as default JVM, remove the JDK6 from the
+machine, or use the linux-alternatives framework to set the opendk-7
+as default
+
+.Hardware
+
+NOTE: The machine should have more than 2GB for several tests to run,
+otherwise the JVM does not allocate enough memory and it will be hit
+or miss for more elaborate tests.
+
+You can also look at <<using-vagrant>> for setting up a build environment.
+[[OSX]]
+=== OS X ===
+
+Read this section if you want to know how to get Neo4j up and
+running under Mac OS X.
+
+IMPORTANT: As of June 6th 2013, the
+https://github.com/delftswa/neo4j/blob/master/community/README.md[README.md]
+of the community edition contains +
+incorrect information w.r.t. building the community edition of Neo4j on OS X.
+
+NOTE: Unless otherwise specified, the used JDK versions are 6 +
+      (distributed by Apple) and 7 (distributed by Oracle).
+
+You can build Neo4j on OS X by performing the following steps:
+
+1. `export JAVA_OPTS="-Xms384M -Xmx512M -XX:MaxPermSize=256M"`
+
+2. `git clone git://github.com/neo4j/neo4j.git community`
+
+3. `mvn clean install`
+
+4. *(OPTIONAL)* if you're having problems building Neo4j on OS X, then execute +
+   `mvn clean install -X -U -Dmaven.test.skip=true` +
+   instead of `mvn clean install`
+
+NOTE: Trying to do either full builds or integration testing on OS X
+will result in build failure, +
+even when the `-Dmaven.test.skip=true` flag is passed.
+
+[[Windows7]]
+=== Windows 7 ===
+
+Read this section if you want to know how to get Neo4j up and
+running under Windows.
+
+These instruction are with respect to a clean Windows 7 Professional install.
+Apache Maven and JDK 1.6 or 1.7 is required to be installed on your machine.
+
+Neo4j can then be build by issuing +
+`mvn clean install`
+
+NOTE: The build flag Dlicensing.skip is always required.
+
+NOTE: DfullBuild fails due to unknown dependencies or settings that are required to build the manuals (19-06-2013)
+
+
+//  LocalWords:  Vagrantfile
