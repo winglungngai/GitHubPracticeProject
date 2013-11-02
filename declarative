@@ -1,0 +1,29 @@
+Hi Group,
+
+Today is the official deadline :P, but we are not going to make it.
+So we still have a week to make the project really fancy!
+
+@Wenbo I talk to Joseph on daily basis, but we both don't have an clear idea what you are working on.
+If anything prevent you from working efficiently, we can solve it together by next week.
+After all we strive for a reasonable workload among 3 of us. And we will be honest about the work division in the report.
+
+So I suggest we share what we have by now,for each task your are working on, please report
+a.) your contribution in one sentence.
+b.) explain what you did, and what you plan to achieve next week.
+c.) url to your code base
+
+[Wing]
+For now, 
+1.a Programmatically managing ec2 instance
+1.b The EC2 Command Line Interface is rather complicated and many functionalities are not required for our project. Therefore ec2interface (see 1.c.1) is developed as an intemediate layer between the lower level instructions of EC2 CLI and the higher level actors. It is built on the top of EC2 SDK JAVA, in the form of a java library (JAR). For now, it is possible to run a new instance, configure a running instance using a bash script, terminate an instance by id, retrieve instance info (publicIP, instanceId and instance status) and retrieve the instance ids of all our instances. @Joseph, can you think of additional features that will be required by the actors?
+1.c.1 https://github.com/winglungngai/ec2interface It is the EC2Interface, can be imported as a java libary.
+1.c.2 https://github.com/winglungngai/EC2Configuration/tree/master EC2 Instance downloads settings, files, softwares from here.
+
+2.a Monitoring EC2 resources.
+2.b Unfortunately not much has been achieved. A dummy monitoring system has been deployed, but it can't do much yet. I will investigate how to retrieve cpu, memory and disk usage info from third-parties program and from cloudwatch. After that I will wrap it into my ec2interface as a API. And finally I will consult Joseph how to build monitoring actors that consumes these APIs and do load balancing based on these info. And if there more time for this, and I develop a webpage that display these info.
+2.c https://github.com/winglungngai/EC2Configuration/tree/master The initInstance script can configure EC2 instance to run play framework and the dummy monitoring system.
+
+
+
+Cheers,
+Wing
