@@ -1,0 +1,45 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{marvosym}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[top=2cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+\usepackage{txfonts}
+\usepackage{cite}
+
+\title{ Natural Language based Initial Edge-signed Graph Construction}
+\subtitle{Research Proposal \\ IN4252 Web Science \& Engineering \\ TU Delft, The Netherlands}
+
+
+\author{
+	Alon Dolev\\ 4251873  \and
+	Wing Ngai \\ 1511483 \\   \and
+	Roshan Timal \\ 4030087\\ 
+}
+
+
+\date{\today}
+\setlength\parindent{0pt}
+\begin{document}
+ 
+\maketitle
+
+\section{Scientific Challenge}
+
+In recent work~\cite{Leskovec:2010}, Leskovec et al. formulate the ``Edge Detection Problem": Given a graph with edges labeled as to be either positively or negatively signed, predict the edge sign of hidden or unlabeled edges with he information provided by the rest of the graph. This problem statement is an abstraction of inter-human relation-judgement and is interesting because studies in social-psychology have indicated patterns in real-world social networks which are shown by the authors to have correlates in the topology of such edge-signed graphs. Therefore, algorithmic solutions to the above stated problem can be used for machine-generated predictions of the attitude people have or might have about their real-world peers. What we find interesting is that given such abstractions the reliance of a solution will be dependent on how the initial attitudes are observed or categorized into the edge signs. The authors limit themselves to data given already in this binary form (, such as ``voting" for moderators on Wikipedia,) and they do so with a good reason: They probably want to rule out possible problems with the observation of edge signs in their data because they focus on solving the prediction problem. We observe that there are a number of artifacts of human interaction indicating attitudes which are present in Online Social Networks but cannot be trivially mapped onto edge signs in such a one to one fashion. Consider for example the sentiments expressed within messages sent by people to each other using Tweets or E-Mails. We therefore propose the ``Natural Language based Initial Edge-signed Graph Construction" problem: Given information exchange between two nodes, infer or predict an edge for the link connecting the two with no guarantee that the information was provided in a binary form, but that it is assumed to be encoded in natural language.
+\\
+\\
+The approach will be as follows: First we will identify relevant research done in the field of Affective Computing or, to be more specific, on a problem sometimes termed as ``text-based emotion prediction problem". A quick informal survey~\cite{Matousek:2007, Alm:2005, Calvo:2010 } has shown that we will need some kind of approach to map existing scales of human emotions onto the binary range required for the edge labeling. Then we will proceed to analyzing our generated edge-signed graphs and see whether the network topology and characteristics correspond with the research in social-psychology as previously done by Leskovec et al. for graphs generated from binary data. It would maybe also be interesting to directly compare between graphs constructed from the same social network but using binary and non-binary affective information, even though it will be difficult to justify the comparison (e.g. vote and commenting behavior on Wikipedia might not have an easy to establish causal relation in the real-world even though it could correlate).
+
+\section{Motivation}
+
+The main motivation would be to allow using edge detection algorithm on networks which do not have a binary edge data, such a in E-Mail communication corpuses. There are big E-Mail data dumps~\cite{Enron} which represent a form of social network and are analyzable as such. With our contribution it will be possible to use edge detection algorithms on such networks. Many big corporation and a large part of their internal communication are based on E-Mail in which information is encoded in natural language alone. An application which springs into mind is that of corporate forensics where investigators want to analyze large amounts of data to find relevant pieces to their case. Searches which include the semantics of ``who did not like Mr. X" would become possible by applying edge-sign prediction and our ``Natural Language based Initial Edge-signed Graph Construction" method. We consider this a useful tool and therefore worth pursuing.
+\\
+\\
+Further, many Online Social Networks allow for some form of natural language communication. Typically, these take the form of comments or private messages. There is information encoded in these messages which could be used to refine and adjust friend suggestions which were generated on the basis of the binary data.
+
+\bibliography{ResearchProposal}{}
+\bibliographystyle{unsrt}
+
+\end{document}
